@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ event.name }}{% endblock %}
+
+{% block body %}
+    <div class="card mb-5 shadow-lg rounded-4">
+        <img src="{{ event.image }}" class="card-img-top rounded-top-4" alt="{{ event.name }}">
+        <div class="card-body">
+            <h1 class="card-title text-primary">{{ event.name }}</h1>
+            <p class="card-text"><strong><i class="fas fa-calendar-alt"></i> Date and Time:</strong> {{ event.date|date('Y-m-d H:i') }}</p>
+            <p class="card-text"><strong><i class="fas fa-info-circle"></i> Description:</strong> {{ event.description }}</p>
+            <p class="card-text"><strong><i class="fas fa-users"></i> Capacity:</strong> {{ event.capacity }}</p>
+            <p class="card-text"><strong><i class="fas fa-envelope"></i> Contact Email:</strong> {{ event.contactEmail }}</p>
+            <p class="card-text"><strong><i class="fas fa-phone"></i> Contact Phone:</strong> {{ event.contactPhone }}</p>
+            <p class="card-text"><strong><i class="fas fa-map-marker-alt"></i> Address:</strong> {{ event.address }}</p>
+            <p class="card-text"><strong><i class="fas fa-link"></i> URL:</strong> <a href="{{ event.url }}" target="_blank">{{ event.url }}</a></p>
+            <p class="card-text"><strong><i class="fas fa-tags"></i> Type:</strong> {{ event.type }}</p>
+        </div>
+        <div class="card-footer text-center">
+            <a href="{{ path('event_edit', {'id': event.id}) }}" class="btn btn-warning rounded-pill"><i class="fas fa-edit"></i> Edit</a>
+            {{ include('event/_delete_form.html.twig') }}
+            <a href="{{ path('event_index') }}" class="btn btn-secondary mt-4 rounded-pill"><i class="fas fa-arrow-left"></i> Back to list</a>
+        </div>
+    </div>
+{% endblock %}
